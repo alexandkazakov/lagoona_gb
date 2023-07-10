@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const offer1Btn = document.getElementById("offer-1");
   const offer3Btn = document.getElementById("offer-3");
   const lkBtn = document.getElementById("header__autorize");
+  const termsBtn = document.getElementById("terms");
 
   feedbackOpenBtn.addEventListener("click", (event) => {
     event.preventDefault();
@@ -129,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "lk",
       `
       <h2 class="section__title modal__title">Регистрация</h2>
-      <form action="" class="modal__form feedback__form">
+      <form action="" class="modal__form register__form" id="register__form">
         <label for="lk__name">Введите ваше имя</label>
         <input
           type="text"
@@ -152,28 +153,82 @@ document.addEventListener("DOMContentLoaded", () => {
           name="lk__email"
           id="lk__email"
           class="want-tour__input modal__input"
-          placeholder="karantoliy@gmail.com"
+          placeholder="tolya_karandash@gmail.com"
         />
         <label for="feedback__phone">Введите пароль</label>
         <input
-          type="text"
-          name="lk__email"
-          id="lk__email"
+          type="password"
+          name="lk__pass"
+          id="lk__pass"
           class="want-tour__input modal__input"
-          placeholder="karantoliy@gmail.com"
+          placeholder="********"
+        />
+        <input
+          type="submit"
+          value="Зарегистрироваться"
+          class="btn-reset btn feedback__btn"
+          id="lk__btn"
         />
       </form>
-      <input
-        type="submit"
-        value="Зарегистрироваться"
-        class="btn-reset btn feedback__btn"
-        id="lk__btn"
-      />
     `
     );
-    document.getElementById("lk__btn").addEventListener("click", (event) => {
-      event.preventDefault();
-      alert("lol");
-    });
+    document
+      .getElementById("register__form")
+      .addEventListener("submit", (event) => {
+        event.preventDefault();
+        const passValue = document.getElementById("lk__pass").value;
+        if (passValue.length < 8) {
+          alert("Минимальная длина пароля 8 символов");
+          return;
+        }
+        if (passValue.search(/\d/) === -1) {
+          alert("Пароль должен содержать цифры");
+          return;
+        }
+        if (passValue.search(/[A-Z]/g) === -1) {
+          alert("Пароль должен содержать заглавные буквы");
+          return;
+        }
+        if (passValue.search(/[a-z]/g) === -1) {
+          alert("Пароль должен содержать строчные буквы");
+          return;
+        }
+        if (passValue.search(/\W/) === -1) {
+          alert("Пароль должен содержать спец. символы");
+          return;
+        }
+        alert("Регистрация прошла успешно!");
+      });
+  });
+
+  termsBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    createModal(
+      "terms",
+      `
+      <h2 class="section__title modal__title">Пользовательское соглашение</h2>
+      <p>Добро пожаловать на наш сайт! Пожалуйста, внимательно ознакомьтесь с нижеследующим пользовательским соглашением перед использованием нашего ресурса. Взаимодействуя с сайтом, вы выражаете свое согласие со всеми указанными ниже условиями и правилами. Если вы не согласны с этими условиями, просим вас немедленно покинуть сайт.</p>
+
+      <p>Личные данные:</p>
+      <p>Мы придаем большое значение защите вашей конфиденциальности. Когда вы взаимодействуете с нашим сайтом, мы можем собирать некоторую информацию, такую как ваше имя, адрес электронной почты и другие данные, которые вы предоставляете добровольно. Мы обязуемся хранить эти данные в безопасности и не передавать их третьим лицам без вашего согласия.</p>
+
+      <p>Интеллектуальная собственность:</p>
+      <p>Все содержимое, представленное на нашем сайте, включая тексты, изображения, графику, логотипы, аудио- и видеоматериалы, является нашей собственностью или собственностью третьих лиц, с которыми мы сотрудничаем. Запрещается копирование, распространение или использование этого контента без нашего явного разрешения или разрешения правообладателя.</p>
+
+      <p>Использование сайта:</p>
+      <p>При использовании нашего сайта вы обязуетесь не нарушать никаких применимых законов и не осуществлять действий, которые могут нанести вред нашему ресурсу или третьим лицам. Запрещается загружать вредоносное программное обеспечение, публиковать незаконный контент, злоупотреблять сервисами сайта или вмешиваться в его нормальное функционирование.</p>
+
+      <p>Отказ от ответственности:</p>
+      <p>Мы прикладываем все усилия, чтобы предоставить точную и актуальную информацию на нашем сайте, однако не гарантируем ее полную достоверность. Мы не несем ответственности за любые убытки или ущерб, возникшие в результате использования информации, представленной на нашем сайте.</p>
+
+      <p>Внешние ссылки:</p>
+      <p>На нашем сайте могут быть представлены ссылки на внешние ресурсы, которые не контролируются нами. Мы не несем ответственности за содержимое или действия, предпринятые на таких внешних сайтах.</p>
+
+      <p>Изменения пользовательского соглашения:</p>
+      <p>Мы оставляем за собой право вносить изменения в это пользовательское соглашение по своему усмотрению. Изменения вступают в силу с момента их публикации на сайте. При посещении сайта после внесения изменений вы автоматически соглашаетесь с новыми условиями.</p>
+
+      <p>Благодарим вас за ознакомление с нашим пользовательским соглашением. Пользуясь нашим сайтом, вы соглашаетесь с вышеуказанными условиями. Если у вас возникли вопросы или замечания, пожалуйста, свяжитесь с нами по указанным контактным данным.</p>
+    `
+    );
   });
 });
