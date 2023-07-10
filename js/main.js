@@ -198,6 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
         alert("Регистрация прошла успешно!");
+        document.getElementById("lk").remove();
       });
   });
 
