@@ -179,36 +179,35 @@ document.addEventListener("DOMContentLoaded", () => {
           />
         </form>
         `;
+      document
+        .getElementById("register__form")
+        .addEventListener("submit", (event) => {
+          event.preventDefault();
+          const passValue = document.getElementById("lk__pass").value;
+          if (passValue.length < 8) {
+            alert("Минимальная длина пароля 8 символов");
+            return;
+          }
+          if (passValue.search(/\d/) === -1) {
+            alert("Пароль должен содержать цифры");
+            return;
+          }
+          if (passValue.search(/[A-Z]/g) === -1) {
+            alert("Пароль должен содержать заглавные буквы");
+            return;
+          }
+          if (passValue.search(/[a-z]/g) === -1) {
+            alert("Пароль должен содержать строчные буквы");
+            return;
+          }
+          if (passValue.search(/\W/) === -1) {
+            alert("Пароль должен содержать спец. символы");
+            return;
+          }
+          alert("Регистрация прошла успешно!");
+          document.getElementById("lk").remove();
+        });
     }, 4000);
-
-    document
-      .getElementById("register__form")
-      .addEventListener("submit", (event) => {
-        event.preventDefault();
-        const passValue = document.getElementById("lk__pass").value;
-        if (passValue.length < 8) {
-          alert("Минимальная длина пароля 8 символов");
-          return;
-        }
-        if (passValue.search(/\d/) === -1) {
-          alert("Пароль должен содержать цифры");
-          return;
-        }
-        if (passValue.search(/[A-Z]/g) === -1) {
-          alert("Пароль должен содержать заглавные буквы");
-          return;
-        }
-        if (passValue.search(/[a-z]/g) === -1) {
-          alert("Пароль должен содержать строчные буквы");
-          return;
-        }
-        if (passValue.search(/\W/) === -1) {
-          alert("Пароль должен содержать спец. символы");
-          return;
-        }
-        alert("Регистрация прошла успешно!");
-        document.getElementById("lk").remove();
-      });
   });
 
   termsBtn.addEventListener("click", (event) => {
