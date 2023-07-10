@@ -126,52 +126,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
   lkBtn.addEventListener("click", (event) => {
     event.preventDefault();
+
     createModal(
       "lk",
       `
-      <h2 class="section__title modal__title">Регистрация</h2>
-      <form action="" class="modal__form register__form" id="register__form">
-        <label for="lk__name">Введите ваше имя</label>
-        <input
-          type="text"
-          name="lk__name"
-          id="lk__name"
-          class="want-tour__input modal__input"
-          placeholder="Анатолий"
-        />
-        <label for="lk__surname">Введите вашу фамилию</label>
-        <input
-          type="text"
-          name="lk__surname"
-          id="lk__surname"
-          class="want-tour__input modal__input"
-          placeholder="Карандашкин"
-        />
-        <label for="lk__email">Введите адрес электронной почты</label>
-        <input
-          type="text"
-          name="lk__email"
-          id="lk__email"
-          class="want-tour__input modal__input"
-          placeholder="tolya_karandash@gmail.com"
-        />
-        <label for="feedback__phone">Введите пароль</label>
-        <input
-          type="password"
-          name="lk__pass"
-          id="lk__pass"
-          class="want-tour__input modal__input"
-          placeholder="********"
-        />
-        <input
-          type="submit"
-          value="Зарегистрироваться"
-          class="btn-reset btn feedback__btn"
-          id="lk__btn"
-        />
-      </form>
+      <svg class="spinner" viewBox="0 0 50 50">
+        <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+      </svg>
     `
     );
+    setTimeout(() => {
+      document.querySelector(".lk__content").innerHTML = `
+    <h2 class="section__title modal__title">Регистрация</h2>
+        <form action="" class="modal__form register__form" id="register__form">
+          <label for="lk__name">Введите ваше имя</label>
+          <input
+            type="text"
+            name="lk__name"
+            id="lk__name"
+            class="want-tour__input modal__input"
+            placeholder="Анатолий"
+          />
+          <label for="lk__surname">Введите вашу фамилию</label>
+          <input
+            type="text"
+            name="lk__surname"
+            id="lk__surname"
+            class="want-tour__input modal__input"
+            placeholder="Карандашкин"
+          />
+          <label for="lk__email">Введите адрес электронной почты</label>
+          <input
+            type="text"
+            name="lk__email"
+            id="lk__email"
+            class="want-tour__input modal__input"
+            placeholder="tolya_karandash@gmail.com"
+          />
+          <label for="feedback__phone">Введите пароль</label>
+          <input
+            type="password"
+            name="lk__pass"
+            id="lk__pass"
+            class="want-tour__input modal__input"
+            placeholder="********"
+          />
+          <input
+            type="submit"
+            value="Зарегистрироваться"
+            class="btn-reset btn feedback__btn"
+            id="lk__btn"
+          />
+        </form>
+        `;
+    }, 4000);
+
     document
       .getElementById("register__form")
       .addEventListener("submit", (event) => {
